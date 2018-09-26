@@ -5,7 +5,7 @@ package cs445.a1;
  * homogeneous collection of objects. It is unordered, there are no limits on
  * the number of items it can store, and it cannot contain duplicate items.
  */
-@SuppressWarnings({"JavadocReference", "SpellCheckingInspection"})
+@SuppressWarnings({"unchecked"})
 public interface SetInterface<E> {
 
     /**
