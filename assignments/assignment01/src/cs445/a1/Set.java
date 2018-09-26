@@ -225,7 +225,7 @@ public class Set<E> implements SetInterface<E> {
      *
      * @param index  An index within the set
      * @return  The object stored in the set at the specified index
-     * @throws ArrayIndexOutOfBoundsException
+     * @throws ArrayIndexOutOfBoundsException  If index is not in the range of the size of the set
      */
     public E get(int index) throws ArrayIndexOutOfBoundsException{
         if(index < 0 || index >= size) throw new ArrayIndexOutOfBoundsException();

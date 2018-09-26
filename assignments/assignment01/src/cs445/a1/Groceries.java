@@ -67,7 +67,7 @@ public class Groceries implements GroceriesInterface {
     public void printAll(){
         System.out.println("Groceries: ");
         for(int i = 0; i < groceryBag.getSize(); i++){
-            System.out.println(groceryBag.get(i).toString());
+            System.out.println(groceryBag.toArray()[i].toString());
         }
     }
 }
