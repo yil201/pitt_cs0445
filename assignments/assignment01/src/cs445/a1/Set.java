@@ -5,8 +5,8 @@ import java.util.Arrays;
 /**
  * Dynamic-capacity array-based implementation.
  */
-@SuppressWarnings({"JavadocReference", "SpellCheckingInspection", "unchecked"})
-public class Set<E> implements cs445.a1.SetInterface<E> {
+@SuppressWarnings({"unchecked", "SpellCheckingInspection"})
+public class Set<E> implements SetInterface<E> {
     private int size, position;
     private E[] contents;
     private static final int DEFAULT_ARRAY_SIZE = 100;
@@ -77,26 +77,20 @@ public class Set<E> implements cs445.a1.SetInterface<E> {
      * @param newEntry  The object to be added as a new entry
      * @return  true if the addition is successful; false if the item already is
      * in this set
-     * @throws cs445.a1.SetFullException  If this set has a fixed capacity and does not
+     * @throws SetFullException  If this set has a fixed capacity and does not
      * have the capacity to store an additional entry
      * @throws NullPointerException  If newEntry is null
      */
-    public boolean add(E newEntry) throws cs445.a1.SetFullException, NullPointerException{
+    public boolean add(E newEntry) throws SetFullException, NullPointerException{
         boolean add = true;
         if(this.isFull()){
             doubleCapacity();
         }
         // SetFullException will never be thrown due to the dynamic-capacity nature
-        if(this.isFull()){
-            throw new cs445.a1.SetFullException();
-        }
-        else if(newEntry == null){
-            throw new NullPointerException();
-        }
+        if(this.isFull()) throw new SetFullException();
+        else if(newEntry == null) throw new NullPointerException();
         // check for duplicates
-        if(this.contains(newEntry)){
-                add = false;
-        }
+        if(this.contains(newEntry)) add = false;
         if(add){
             this.contents[position] = newEntry;
             position ++;
@@ -133,9 +127,7 @@ public class Set<E> implements cs445.a1.SetInterface<E> {
      */
     public E remove(E entry) throws NullPointerException{
         E removed = null;
-        if(this.isEmpty()){
-            throw new NullPointerException();
-        }
+        if(this.isEmpty()) throw new NullPointerException();
         if(this.contains(entry)){
             removed = entry;
             for(int i = this.getSize(); i >= 0; i--){
@@ -180,9 +172,7 @@ public class Set<E> implements cs445.a1.SetInterface<E> {
      */
     public void clear(){
         if(!this.isEmpty()){
-            for(int i = 0; i < this.getSize(); i++){
-                this.contents[i] = null;
-            }
+            for(int i = 0; i < this.getSize(); i++) this.contents[i] = null;
         }
     }
 
@@ -200,9 +190,7 @@ public class Set<E> implements cs445.a1.SetInterface<E> {
      * @throws NullPointerException  If entry is null
      */
     public boolean contains(E entry) throws NullPointerException{
-        if(entry == null){
-            throw new NullPointerException();
-        }
+        if(entry == null) throw new NullPointerException();
         boolean found = false;
         for(int i = 0; !found && (i < this.getSize()); i++){
             if(entry.equals(this.contents[i])){
@@ -230,6 +218,18 @@ public class Set<E> implements cs445.a1.SetInterface<E> {
         Object[] array = new Object[this.getSize()];
         System.arraycopy(this.contents, 0, array, 0, this.getSize());
         return array;
+    }
+
+    /**
+     * Get content of this set at a specified index.
+     *
+     * @param index  An index within the set
+     * @return  The object stored in the set at the specified index
+     * @throws ArrayIndexOutOfBoundsException
+     */
+    public E get(int index) throws ArrayIndexOutOfBoundsException{
+        if(index < 0 || index >= size) throw new ArrayIndexOutOfBoundsException();
+        return contents[index];
     }
 
 }

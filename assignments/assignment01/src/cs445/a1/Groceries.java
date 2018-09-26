@@ -4,7 +4,7 @@ public class Groceries implements GroceriesInterface {
     private Set<GroceryItem> groceryBag;
 
     public Groceries(){
-        groceryBag = new Set<GroceryItem>();
+        groceryBag = new Set<>();
     }
 
     /**
@@ -18,9 +18,7 @@ public class Groceries implements GroceriesInterface {
      * @param item the item to add
      */
     public void addItem(GroceryItem item){
-        for(int i = 0; i < groceryBag.getSize(); i++){
-            if(item.getDescription().equals())
-        }
+
     }
 
     /**
@@ -35,7 +33,10 @@ public class Groceries implements GroceriesInterface {
      * @param item the item to remove
      */
     public void removeItem(GroceryItem item){
-
+        for(int i = 0; groceryBag.contains(item) && (i < groceryBag.getSize()); i++){
+            if(item.getQuantity() >= groceryBag.get(i).getQuantity()) groceryBag.get(i).setQuantity(0);
+            else groceryBag.get(i).setQuantity(groceryBag.get(i).getQuantity() - item.getQuantity());
+        }
     }
 
     /**
@@ -49,7 +50,14 @@ public class Groceries implements GroceriesInterface {
      * @return  the old quantity, or -1 if the item was not found
      */
     public int modifyQuantity(GroceryItem item){
-
+        int modified = -1;
+        for(int i = 0; i < groceryBag.getSize(); i++){
+            if(groceryBag.get(i).getDescription().equals(item.getDescription())){
+                modified = groceryBag.get(i).getQuantity();
+                groceryBag.get(i).setQuantity(modified + item.getQuantity());
+            }
+        }
+        return modified;
     }
 
     /**
@@ -58,6 +66,8 @@ public class Groceries implements GroceriesInterface {
      */
     public void printAll(){
         System.out.println("Groceries: ");
-
+        for(int i = 0; i < groceryBag.getSize(); i++){
+            System.out.println(groceryBag.get(i).toString());
+        }
     }
 }
