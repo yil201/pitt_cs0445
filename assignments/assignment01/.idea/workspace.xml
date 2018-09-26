@@ -30,7 +30,7 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Groceries.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="Groceries.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/cs445/a1/Groceries.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="615">
@@ -52,11 +52,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Set.java" pinned="false" current-in-tab="false">
+      <file leaf-file-name="Set.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/cs445/a1/Set.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="62">
-              <caret line="210" column="77" lean-forward="true" selection-start-line="210" selection-start-column="77" selection-end-line="210" selection-end-column="77" />
+            <state relative-caret-position="590">
+              <caret line="227" column="45" lean-forward="true" selection-start-line="227" selection-start-column="45" selection-end-line="227" selection-end-column="45" />
               <folding>
                 <element signature="e#101#160#0" expanded="true" />
               </folding>
@@ -201,12 +201,12 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1537968096976</updated>
-      <workItem from="1537968098352" duration="4066000" />
+      <workItem from="1537968098352" duration="4332000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="4066000" />
+    <option name="totallyTimeSpent" value="4332000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="23" width="1680" height="947" extended-state="0" />
@@ -263,16 +263,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/cs445/a1/Set.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="62">
-          <caret line="210" column="77" lean-forward="true" selection-start-line="210" selection-start-column="77" selection-end-line="210" selection-end-column="77" />
-          <folding>
-            <element signature="e#101#160#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/cs445/a1/GroceryItem.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="170">
@@ -287,6 +277,16 @@
           <folding>
             <element signature="e#138#139#0" expanded="true" />
             <element signature="e#189#190#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/cs445/a1/Set.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="590">
+          <caret line="227" column="45" lean-forward="true" selection-start-line="227" selection-start-column="45" selection-end-line="227" selection-end-column="45" />
+          <folding>
+            <element signature="e#101#160#0" expanded="true" />
           </folding>
         </state>
       </provider>
