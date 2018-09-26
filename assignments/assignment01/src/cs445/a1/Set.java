@@ -5,7 +5,7 @@ import java.util.Arrays;
 /**
  * Dynamic-capacity array-based implementation.
  */
-@SuppressWarnings({"unchecked", "SpellCheckingInspection"})
+@SuppressWarnings({"unchecked"})
 public class Set<E> implements SetInterface<E> {
     private int size, position;
     private E[] contents;
@@ -130,7 +130,7 @@ public class Set<E> implements SetInterface<E> {
         if(this.isEmpty()) throw new NullPointerException();
         if(this.contains(entry)){
             removed = entry;
-            for(int i = this.getSize(); i >= 0; i--){
+            for(int i = this.getSize() - 1; i >= 0; i--){
                 if(this.contents[i].equals(entry)){
                     this.contents[i] = entry;
                     System.arraycopy(this.contents, i + 1, this.contents, i, this.getSize() - i + 1);
@@ -171,9 +171,9 @@ public class Set<E> implements SetInterface<E> {
      * Otherwise, the set will be modified so that it contains no entries.
      */
     public void clear(){
-        if(!this.isEmpty()){
-            for(int i = 0; i < this.getSize(); i++) this.contents[i] = null;
-        }
+        this.size = this.getCapacity();
+        this.position = 0;
+        this.contents = (E[]) new Object[size];
     }
 
     /**
@@ -230,5 +230,9 @@ public class Set<E> implements SetInterface<E> {
     public E get(int index) throws ArrayIndexOutOfBoundsException{
         if(index < 0 || index >= size) throw new ArrayIndexOutOfBoundsException();
         return (E) this.toArray()[index];
+    }
+
+    public int getCapacity(){
+        return size;
     }
 }
