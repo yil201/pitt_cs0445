@@ -4,7 +4,7 @@ public class Groceries implements GroceriesInterface {
     private Set<GroceryItem> groceryBag;
 
     public Groceries(){
-        groceryBag = new Set();
+        groceryBag = new Set<>();
     }
 
     /**
@@ -27,13 +27,11 @@ public class Groceries implements GroceriesInterface {
             }
         }
         if(!added){
-            try{
+            try {
                 boolean addOp = groceryBag.add(item);
+            } catch (SetFullException e) {
+                e.printStackTrace();
             }
-            catch (SetFullException e){
-                new SetFullException();
-            }
-
         }
     }
 
