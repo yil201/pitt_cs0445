@@ -1,10 +1,10 @@
 package cs445.a1;
 
-public class Groceries implements cs445.a1.GroceriesInterface {
-    private cs445.a1.Set<cs445.a1.GroceryItem> groceryBag;
+public class Groceries implements GroceriesInterface {
+    private Set<GroceryItem> groceryBag;
 
     public Groceries(){
-        groceryBag = new cs445.a1.Set<cs445.a1.GroceryItem>();
+        groceryBag = new Set<GroceryItem>();
     }
 
     /**
@@ -17,8 +17,10 @@ public class Groceries implements cs445.a1.GroceriesInterface {
      *
      * @param item the item to add
      */
-    public void addItem(cs445.a1.GroceryItem item){
-
+    public void addItem(GroceryItem item){
+        for(int i = 0; i < groceryBag.getSize(); i++){
+            if(item.getDescription().equals())
+        }
     }
 
     /**
@@ -32,7 +34,7 @@ public class Groceries implements cs445.a1.GroceriesInterface {
      *
      * @param item the item to remove
      */
-    public void removeItem(cs445.a1.GroceryItem item){
+    public void removeItem(GroceryItem item){
 
     }
 
@@ -46,7 +48,7 @@ public class Groceries implements cs445.a1.GroceriesInterface {
      * @param item the item to modify in the set
      * @return  the old quantity, or -1 if the item was not found
      */
-    public int modifyQuantity(cs445.a1.GroceryItem item){
+    public int modifyQuantity(GroceryItem item){
 
     }
 
