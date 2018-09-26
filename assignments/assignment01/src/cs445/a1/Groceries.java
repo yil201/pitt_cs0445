@@ -4,7 +4,7 @@ public class Groceries implements GroceriesInterface {
     private Set<GroceryItem> groceryBag;
 
     public Groceries(){
-        groceryBag = new Set<>();
+        groceryBag = new Set();
     }
 
     /**
@@ -18,7 +18,23 @@ public class Groceries implements GroceriesInterface {
      * @param item the item to add
      */
     public void addItem(GroceryItem item){
+        boolean added = false;
+        for(int i = 0; i < groceryBag.getSize(); i++){
+            if(groceryBag.get(i).getDescription().equals(item.getDescription())) {
+                modifyQuantity(item);
+                added = true;
+                break;
+            }
+        }
+        if(!added){
+            try{
+                boolean addOp = groceryBag.add(item);
+            }
+            catch (SetFullException e){
+                new SetFullException();
+            }
 
+        }
     }
 
     /**

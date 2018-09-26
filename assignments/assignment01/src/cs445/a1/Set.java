@@ -229,7 +229,6 @@ public class Set<E> implements SetInterface<E> {
      */
     public E get(int index) throws ArrayIndexOutOfBoundsException{
         if(index < 0 || index >= size) throw new ArrayIndexOutOfBoundsException();
-        return contents[index];
+        return (E) this.toArray()[index];
     }
-
 }
