@@ -3,7 +3,6 @@ package cs445.a1;
 /**
  * A test of the methods, addItem, removeItem, modifyQuantity, printAll,
  * as defined in the class Groceries.
- *
  */
 public class GroceriesExamples {
     public static void main(String[] args){
