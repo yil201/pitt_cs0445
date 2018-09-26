@@ -21,14 +21,15 @@ public class Groceries implements GroceriesInterface {
         boolean added = false;
         for(int i = 0; i < groceryBag.getSize(); i++){
             if(groceryBag.get(i).getDescription().equals(item.getDescription())) {
-                modifyQuantity(item);
+                modifyQuantity(new GroceryItem(item.getDescription(),
+                        item.getQuantity() + groceryBag.get(i).getQuantity()));
                 added = true;
                 break;
             }
         }
         if(!added){
             try {
-                boolean addOp = groceryBag.add(item);
+                groceryBag.add(item);
             } catch (SetFullException e) {
                 e.printStackTrace();
             }
@@ -47,9 +48,16 @@ public class Groceries implements GroceriesInterface {
      * @param item the item to remove
      */
     public void removeItem(GroceryItem item){
-        for(int i = 0; groceryBag.contains(item) && (i < groceryBag.getSize()); i++){
-            if(item.getQuantity() >= groceryBag.get(i).getQuantity()) groceryBag.get(i).setQuantity(0);
-            else groceryBag.get(i).setQuantity(groceryBag.get(i).getQuantity() - item.getQuantity());
+        for(int i = 0; i < groceryBag.getSize(); i++){
+            if(item.getDescription().equals(groceryBag.get(i).getDescription())){
+                if(groceryBag.get(i).getQuantity() >= item.getQuantity())
+                    this.modifyQuantity(new GroceryItem(item.getDescription(),
+                            groceryBag.get(i).getQuantity() - item.getQuantity()));
+                else{
+                    this.modifyQuantity(new GroceryItem(item.getDescription(), 0));
+                }
+            }
+
         }
     }
 
@@ -68,7 +76,7 @@ public class Groceries implements GroceriesInterface {
         for(int i = 0; i < groceryBag.getSize(); i++){
             if(groceryBag.get(i).getDescription().equals(item.getDescription())){
                 modified = groceryBag.get(i).getQuantity();
-                groceryBag.get(i).setQuantity(modified + item.getQuantity());
+                groceryBag.get(i).setQuantity(item.getQuantity());
             }
         }
         return modified;
