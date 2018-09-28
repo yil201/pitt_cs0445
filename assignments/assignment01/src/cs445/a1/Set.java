@@ -54,9 +54,6 @@ public class Set<E> implements SetInterface<E> {
      *
      * @return  true if this set is full; false if not
      */
-    public boolean isFull(){
-        return position == this.size;
-    }
 
     /**
      * Adds a new entry to this set, avoiding duplicates.
@@ -83,27 +80,21 @@ public class Set<E> implements SetInterface<E> {
      */
     public boolean add(E newEntry) throws SetFullException, NullPointerException{
         boolean add = true;
-        if(this.isFull()){
-            doubleCapacity();
+        if(this.position == this.size){
+            // double capacity
+            size = 2 * contents.length;
+            contents = Arrays.copyOf(contents, 2 * contents.length);
         }
         // SetFullException will never be thrown due to the dynamic-capacity nature
-        if(this.isFull()) throw new SetFullException();
+        if(this.position == this.size) throw new SetFullException();
         else if(newEntry == null) throw new NullPointerException();
         // check for duplicates
         if(this.contains(newEntry)) add = false;
         if(add){
-            this.contents[position] = newEntry;
+            contents[position] = newEntry;
             position ++;
         }
         return add;
-    }
-
-    /**
-     * Double the capacity of this set.
-     */
-    public void doubleCapacity(){
-        size = 2 * contents.length;
-        contents = Arrays.copyOf(contents, 2 * contents.length);
     }
 
     /**
@@ -171,7 +162,6 @@ public class Set<E> implements SetInterface<E> {
      * Otherwise, the set will be modified so that it contains no entries.
      */
     public void clear(){
-        this.size = this.getCapacity();
         this.position = 0;
         this.contents = (E[]) new Object[size];
     }
@@ -218,21 +208,5 @@ public class Set<E> implements SetInterface<E> {
         Object[] array = new Object[this.getSize()];
         System.arraycopy(this.contents, 0, array, 0, this.getSize());
         return array;
-    }
-
-    /**
-     * Get content of this set at a specified index.
-     *
-     * @param index  An index within the set
-     * @return  The object stored in the set at the specified index
-     * @throws ArrayIndexOutOfBoundsException  If index is not in the range of the size of the set
-     */
-    public E get(int index) throws ArrayIndexOutOfBoundsException{
-        if(index < 0 || index >= size) throw new ArrayIndexOutOfBoundsException();
-        return (E) this.toArray()[index];
-    }
-
-    public int getCapacity(){
-        return size;
     }
 }

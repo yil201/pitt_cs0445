@@ -13,17 +13,13 @@ public class SetExamples {
 
         aSet = new Set<>();
         a = aSet.getSize();
-        b = aSet.getCapacity();
         System.out.println(a);
-        System.out.println(b);
         for(Object str : aSet.toArray()) System.out.println(str);
         System.out.println();
 
         aSet = new Set<>(3);
         a = aSet.getSize();
-        b = aSet.getCapacity();
         System.out.println(a);
-        System.out.println(b);
         for(Object str : aSet.toArray()) System.out.println(str);
         System.out.println();
 
@@ -33,13 +29,7 @@ public class SetExamples {
         System.out.println();
 
         d = aSet.isEmpty();
-        e = aSet.isFull();
         System.out.println(d);
-        System.out.println(e);
-        System.out.println();
-
-        aSet.doubleCapacity();
-        System.out.println(aSet.getCapacity());
         System.out.println();
 
         aSet.remove("a");
@@ -64,7 +54,5 @@ public class SetExamples {
         for(Object str : aSet.toArray()) System.out.println(str);
         System.out.println();
 
-        c = aSet.getCapacity();
-        System.out.println(c);
     }
 }
